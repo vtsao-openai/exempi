@@ -63,3 +63,6 @@ samples/source/modifyingxmp
 samples/source/readingxmp
 samples/source/xmpcommandtool
 samples/source/xmpcoverageLog.txt
+
+MODULE.bazel.lock
+bazel-*

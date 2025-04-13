@@ -1,0 +1,37 @@
+load("@rules_cc//cc:defs.bzl", "cc_library")
+
+cc_library(
+    name = "exempi",
+    srcs = [
+        "exempi.cpp",
+    ],
+    hdrs = [
+        "xmp.h",
+        "xmp++.hpp",
+        "xmpconsts.h",
+        "xmperrors.h",
+    ],
+    deps = [
+        "//XMPCore/source",
+        "//XMPFiles/source",
+        "//source",
+        "//third-party/zuid/interfaces",
+    ],
+)
+
+alias(
+    name = "libexempi",
+    actual = ":exempi",
+    visibility = ["//visibility:public"],
+)
+
+# cc_binary(
+#     name = "exempi_bin",
+#     srcs = ["main.cpp"],
+#     deps = [":exempi"],
+# )
+
+# cc_test(
+#     name = "exempi_core_test",
+#     srcs = [],
+# )
