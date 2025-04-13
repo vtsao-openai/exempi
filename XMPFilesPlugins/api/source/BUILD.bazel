@@ -9,6 +9,7 @@ cc_library(
         "PluginAPIImpl.cpp",
         "PluginBase.cpp",
         "PluginRegistry.cpp",
+        "PluginUtils.cpp",
     ],
     hdrs = [
         "HostAPI.h",

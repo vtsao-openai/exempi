@@ -10,7 +10,7 @@
 #ifndef __XMP_PLUSPLUS_H__
 #define __XMP_PLUSPLUS_H__
 
-#include <exempi/xmp.h>
+#include "exempi/xmp.h"
 
 namespace xmp {
 

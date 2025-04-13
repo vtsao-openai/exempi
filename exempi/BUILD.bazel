@@ -1,16 +1,16 @@
 load("@rules_cc//cc:defs.bzl", "cc_library")
+load("//exempi:gen_test_targets.bzl", "gen_test_targets")
 
 cc_library(
     name = "exempi",
-    srcs = [
-        "exempi.cpp",
-    ],
+    srcs = ["exempi.cpp"],
     hdrs = [
         "xmp.h",
         "xmp++.hpp",
         "xmpconsts.h",
         "xmperrors.h",
     ],
+    includes = [""],
     deps = [
         "//XMPCore/source",
         "//XMPFiles/source",
@@ -25,13 +25,36 @@ alias(
     visibility = ["//visibility:public"],
 )
 
-# cc_binary(
-#     name = "exempi_bin",
-#     srcs = ["main.cpp"],
-#     deps = [":exempi"],
-# )
+cc_binary(
+    name = "exempi_bin",
+    srcs = ["main.cpp"],
+    local_defines = [
+        # This needs to be defined to compile, but just leave it blank, people
+        # will forget to update it.
+        "VERSION=\\\"\\\"",
+    ],
+    visibility = ["//visibility:public"],
+    deps = [":exempi"],
+)
 
-# cc_test(
-#     name = "exempi_core_test",
-#     srcs = [],
-# )
+cc_library(
+    name = "exempi_test_lib",
+    srcs = ["tests/utils.cpp"],
+    hdrs = ["tests/utils.h"],
+    data = [
+        "tests/fdo18635.jpg",
+        "tests/fdo83313.jpg",
+        "tests/test1.xmp",
+        "//samples/testfiles",
+    ],
+    deps = [
+        ":exempi",
+        "@boost.format",
+        "@boost.test",
+    ],
+)
+
+gen_test_targets(
+    name = "gen_exempi_test_targets",
+    cc_srcs = glob(["tests/test*.cpp"]),
+)

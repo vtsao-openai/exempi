@@ -25,6 +25,7 @@ cc_library(
         "XMP_UnixEndian.h",
         "XMP_Version.h",
     ],
+    # Dependent targets also need these set.
     defines = ["HAVE_STDINT_H"] + select({
         "@platforms//os:linux": [
             "UNIX_ENV",
