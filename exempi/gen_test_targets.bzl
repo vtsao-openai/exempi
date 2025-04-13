@@ -15,5 +15,8 @@ def gen_test_targets(name, cc_srcs):
             env = {
                 "TEST_DIR": "exempi/tests",
                 "srcdir": "exempi",
+                # For BCR set to:
+                # "TEST_DIR": "external/exempi~/exempi/tests",
+                # "srcdir": "external/exempi~/exempi",
             },
         )
