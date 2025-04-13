@@ -2,6 +2,7 @@ package(default_visibility = ["//:__subpackages__"])
 
 filegroup(
     name = "testfiles",
+    testonly = True,
     srcs = [
         "BlueSquare.ai",
         "BlueSquare.avi",

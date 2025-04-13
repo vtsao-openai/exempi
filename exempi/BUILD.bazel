@@ -1,6 +1,8 @@
 load("@rules_cc//cc:defs.bzl", "cc_library")
 load("//exempi:gen_test_targets.bzl", "gen_test_targets")
 
+package(default_visibility = ["//:__subpackages__"])
+
 cc_library(
     name = "exempi",
     srcs = ["exempi.cpp"],
@@ -19,26 +21,20 @@ cc_library(
     ],
 )
 
-alias(
-    name = "libexempi",
-    actual = ":exempi",
-    visibility = ["//visibility:public"],
-)
-
 cc_binary(
-    name = "exempi_bin",
+    name = "bin",
     srcs = ["main.cpp"],
     local_defines = [
         # This needs to be defined to compile, but just leave it blank, people
         # will forget to update it.
         "VERSION=\\\"\\\"",
     ],
-    visibility = ["//visibility:public"],
     deps = [":exempi"],
 )
 
 cc_library(
     name = "exempi_test_lib",
+    testonly = True,
     srcs = ["tests/utils.cpp"],
     hdrs = ["tests/utils.h"],
     data = [
