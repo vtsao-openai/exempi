@@ -50,6 +50,11 @@ cc_library(
     ],
 )
 
+filegroup(
+    name = "test_dir",
+    srcs = ["tests"],
+)
+
 gen_test_targets(
     name = "gen_exempi_test_targets",
     cc_srcs = glob(["tests/test*.cpp"]),
