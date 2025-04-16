@@ -46,7 +46,7 @@ cc_library(
     deps = [
         ":exempi",
         "@boost.format",
-        "@boost.test//:unit_test_main",
+        "@boost.test//:hdrs",
     ],
 )
 
