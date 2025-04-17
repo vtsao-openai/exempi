@@ -1,5 +1,3 @@
-common --registry=file:///home/dev-user/code/bazel-central-registry
-
 build:asan --copt=-fsanitize=address
 build:asan --compilation_mode=dbg
 build:asan --copt=-fno-omit-frame-pointer
